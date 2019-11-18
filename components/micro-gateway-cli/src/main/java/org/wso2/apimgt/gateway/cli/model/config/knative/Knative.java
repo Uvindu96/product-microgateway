@@ -18,6 +18,9 @@
 
 package org.wso2.apimgt.gateway.cli.model.config.knative;
 
+/**
+ * Knative service descriptor.
+ */
 public class Knative {
 
     private KnativeConfigMap knativeConfigMap;

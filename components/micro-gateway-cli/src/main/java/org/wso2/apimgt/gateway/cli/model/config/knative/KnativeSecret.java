@@ -21,6 +21,9 @@ package org.wso2.apimgt.gateway.cli.model.config.knative;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Knative secret descriptor.
+ */
 public class KnativeSecret {
 
     private boolean enable = false;

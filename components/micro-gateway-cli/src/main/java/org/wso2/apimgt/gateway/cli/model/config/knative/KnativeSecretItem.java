@@ -20,6 +20,9 @@ package org.wso2.apimgt.gateway.cli.model.config.knative;
 
 import org.quartz.utils.FindbugsSuppressWarnings;
 
+/**
+ * Knative secret item descriptor.
+ */
 public class KnativeSecretItem {
     private String name;
     private String mountPath;
