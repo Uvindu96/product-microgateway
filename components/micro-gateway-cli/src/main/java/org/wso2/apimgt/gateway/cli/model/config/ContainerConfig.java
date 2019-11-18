@@ -17,6 +17,8 @@
  */
 package org.wso2.apimgt.gateway.cli.model.config;
 
+import org.wso2.apimgt.gateway.cli.model.config.knative.Knative;
+
 /**
  * Configuration for containerized deployment.
  * Docker and k8s.
@@ -24,6 +26,7 @@ package org.wso2.apimgt.gateway.cli.model.config;
 public class ContainerConfig {
     private Docker docker;
     private Kubernetes kubernetes;
+    private Knative knative;
 
     public Docker getDocker() {
         return docker;
@@ -48,6 +51,14 @@ public class ContainerConfig {
         );
     }
 
+    public Knative getKnative() {
+        return knative;
+    }
+
+    public void setKnative(Knative knative) {
+        this.knative = knative;
+    }
+
     public boolean getHasKubernetes() {
         return kubernetes != null && (
                 (kubernetes.getKubernetesConfigMap() != null && kubernetes.getKubernetesConfigMap().isEnable()) ||
@@ -62,6 +73,15 @@ public class ContainerConfig {
                                 .getKubernetesPersistentVolumeClaim().isEnable()) ||
                         (kubernetes.getKubernetesSecret() != null && kubernetes.getKubernetesSecret().isEnable()) ||
                         (kubernetes.getKubernetesService() != null && kubernetes.getKubernetesService().isEnable())
+        );
+    }
+    public boolean getHasKnative() {
+        return knative != null && (
+                (knative.getKnativeConfigMap() != null && knative.getKnativeConfigMap().isEnable()) ||
+                        (knative.getKnativeService() != null && knative.getKnativeService()
+                                .isEnable()) ||
+                        (knative.getKnativeSecret() != null && knative.getKnativeSecret().isEnable()) ||
+                        (knative.getKnativeService() != null && knative.getKnativeService().isEnable())
         );
     }
 }
