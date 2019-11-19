@@ -1,0 +1,26 @@
+{{#if containerConfig.knative.knativeService.enable}}
+@knative:Service{
+{{#if containerConfig.knative.knativeService.name}}
+name:"{{containerConfig.knative.knativeService.name}}"{{/if}}{{#if containerConfig.knative.knativeService.labels}},
+labels:"{{containerConfig.knative.knativeService.labels}}"{{/if}}{{#if containerConfig.knative.knativeService.replicas}},
+image:"{{containerConfig.knative.knativeService.image}}"{{/if}}{{#if containerConfig.knative.knativeService.imagePullPolicy}},
+env:{{{containerConfig.knative.knativeService.env}}}{{/if}}{{#if containerConfig.knative.knativeService.buildImage}},
+buildImage:{{containerConfig.knative.knativeService.buildImage}}{{/if}}{{#if containerConfig.knative.knativeServivce.copyFiles.enable}},
+copyFiles:[
+      {{#containerConfig.knative.knativeService.copyFiles.files}}
+          {
+            {{#if source}} source:"{{source}}", {{/if}}
+            {{#if target}} target:"{{target}}" {{/if}}
+          }{{#unless @last}},{{/unless}}
+      {{/containerConfig.knative.knative.copyFiles.files}}
+    ]{{/if}}{{#if containerConfig.knative.knativeService.dockerHost}},
+    dockerHost:"{{containerConfig.knative.knativeService.dockerHost}}"{{/if}}{{#if containerConfig.knative.knativeService.dockerCertPath}},
+        dockerCertPath:"{{containerConfig.knative.knativeService.dockerCertPath}}"{{/if}}{{#if containerConfig.knative.knativeService.push}},
+        push:{{containerConfig.knative.knativeService.push}},
+        username:"$env{DOCKER_USERNAME}",
+        password:"$env{DOCKER_PASSWORD}"{{/if}}{{#if containerConfig.knative.knativeService.baseImage}},
+        baseImage:"{{containerConfig.knative.knativeService.baseImage}}"{{/if}}{{#if containerConfig.knative.knativeService.singleYAML}},
+        singleYAML:{{containerConfig.knative.knative.singleYAML}}
+        containerConcurrency:{{containerConfig.knative.knativeService.singleYAML}}{{/if}}
+}
+{{/if}}

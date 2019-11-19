@@ -1,0 +1,14 @@
+{{#if containerConfig.knative.knativeConfigMap.enable}}
+{{#containerConfig.knative.knativeConfigMap}}@knative:ConfigMap {
+{{#ballerinaConf}}
+    ballerinaConf: "{{ballerinaConf}}"{{#if configMaps}},{{/if}}{{/ballerinaConf}}{{#if configMaps}}
+    configMaps: [ {{#configMaps}}
+        { {{#name}}
+            name:"{{name}}",{{/name}}{{#readOnly}}
+            readOnly:{{readOnly}},{{/readOnly}}{{#if data}}
+            data:[{{#data}}"{{.}}"{{#unless @last}},{{/unless}}{{/data}}],{{/if}}{{#mountPath}}
+            mountPath:"{{mountPath}}"{{/mountPath}}
+        }{{#unless @last}},{{/unless}}{{/configMaps}}
+    ]{{/if}}
+}{{/containerConfig.knative.knativeConfigMap}}
+{{/if}}}
