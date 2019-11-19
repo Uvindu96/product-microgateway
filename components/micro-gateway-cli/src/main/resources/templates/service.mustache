@@ -34,6 +34,7 @@ import wso2/gateway;
 
 
 {{>kubernetes}}
+{{<knative}}
 
 @http:ServiceConfig {
     basePath: "{{basepath}}",{{!-- {{only one base path is allowed for all  endpoints}} --}}
