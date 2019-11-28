@@ -3,6 +3,7 @@ import ballerina/http;
 import ballerina/config;
 import ballerina/time;
 {{#if containerConfig.hasKubernetes}}import ballerinax/kubernetes;{{/if}}
+{{#if containerConfig.hasKnative}}import ballerinax/knative;{{/if}}
 import wso2/gateway;
 {{#equals endpointConfig.prodEndpoints.type "http"}}
     {{#endpointConfig.prodEndpoints}}{{>httpEndpoint}}{{/endpointConfig.prodEndpoints}}
@@ -34,7 +35,7 @@ import wso2/gateway;
 
 
 {{>kubernetes}}
-{{<knative}}
+{{>knative}}
 
 @http:ServiceConfig {
     basePath: "{{basepath}}",{{!-- {{only one base path is allowed for all  endpoints}} --}}

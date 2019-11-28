@@ -12,7 +12,7 @@ copyFiles:[
             {{#if source}} source:"{{source}}", {{/if}}
             {{#if target}} target:"{{target}}" {{/if}}
           }{{#unless @last}},{{/unless}}
-      {{/containerConfig.knative.knative.copyFiles.files}}
+      {{/containerConfig.knative.knativeService.copyFiles.files}}
     ]{{/if}}{{#if containerConfig.knative.knativeService.dockerHost}},
     dockerHost:"{{containerConfig.knative.knativeService.dockerHost}}"{{/if}}{{#if containerConfig.knative.knativeService.dockerCertPath}},
         dockerCertPath:"{{containerConfig.knative.knativeService.dockerCertPath}}"{{/if}}{{#if containerConfig.knative.knativeService.push}},
